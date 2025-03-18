@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+import java.util.stream.IntStream;
+
 /**
  * Tests the sumOfDigits method in the GeneralNumbersProblemSolution class.
  *
@@ -20,12 +23,14 @@ import org.junit.jupiter.api.Test;
 class C_SumOfDigits {
 
   @Test
-  @Disabled
   void testSumOfDigits() {
     final var input = DummyData.fakerNumber();
     var mySolution = NumbersProblemSolution.sumOfDigits(input);
-    var yourSolution = 2;
+    var yourSolution = 0;
 
+    for(int i = input; i > 0; i /= 10){
+      yourSolution += i % 10;
+    }
     Assertions.assertEquals(mySolution, yourSolution);
   }
 }

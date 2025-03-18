@@ -13,11 +13,19 @@ import org.junit.jupiter.api.Test;
  */
 class D_ValidNumbersOnly {
   @Test
-  @Disabled
   void testCheckAllIntegersWithoutAlphabets() {
     final var input = List.of("1", "12", "12a", "a12");
-    var yourSolution = List.of();
+    List<String> yourSolution = List.of();
     var mySolution = NumbersProblemSolution.getNumberOnly(input);
+
+    for(String seq : input) {
+      try{
+        Integer.valueOf(seq);
+        yourSolution.add(seq);
+      } catch (NumberFormatException e) {
+          continue;
+      }
+    }
 
     Assertions.assertEquals(mySolution, yourSolution);
   }
