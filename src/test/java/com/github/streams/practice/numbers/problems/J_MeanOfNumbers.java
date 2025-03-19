@@ -8,15 +8,14 @@ import org.junit.jupiter.api.Test;
 
 class J_MeanOfNumbers {
   @Test
+  @Disabled
   void meanOfNumbers() {
     final var input =
         List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
 
     final var mySolution = NumbersProblemSolution.meanOfNumbers(input);
-    final var yourSolution = input.stream().mapToDouble(Double::valueOf).reduce(Double::sum).orElse(0.0);
+    final var yourSolution = -1;
 
-    System.out.println(yourSolution / (double) input.size());
-    System.out.println(mySolution);
-    Assertions.assertEquals(mySolution, yourSolution / (double) input.size());
+    Assertions.assertEquals(mySolution, yourSolution);
   }
 }

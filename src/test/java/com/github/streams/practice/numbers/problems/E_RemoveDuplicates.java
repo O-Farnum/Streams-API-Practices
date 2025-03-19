@@ -13,9 +13,10 @@ import org.junit.jupiter.api.Test;
 class E_RemoveDuplicates {
 
   @Test
+  @Disabled
   void testRemoveDuplicationFromListTest() {
     final var input = DummyData.fakeListOfLongNumbers();
-    var yourSolution = input.stream().distinct().toList();
+    var yourSolution = List.<Long>of();
     var mySolution = NumbersProblemSolution.getUniqueNumberFromList(input);
 
     Assertions.assertEquals(mySolution, yourSolution);
