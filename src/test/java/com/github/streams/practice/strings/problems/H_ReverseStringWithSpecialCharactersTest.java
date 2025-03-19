@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 /**
  * Unit test for reversing a string that contains special characters.
  *
@@ -20,13 +22,18 @@ class H_ReverseStringWithSpecialCharactersTest {
    * @todo Implement this test method
    */
   @Test
-  @Disabled
   void testReverseStringWithSpecialCharactersTest() {
     var input = "Hello world! This is a test. 😅";
     var mySolution = StringProblemsSolution.reverseStringWithSpecialCharacters(input);
 
     var yourSolution = "";
 
+    String[] splitInput = input.split("");
+    String[] result = new String[splitInput.length];
+    for(int i = 0; i < splitInput.length; i++) {
+      result[splitInput.length - 1 - i] = splitInput[i];
+    }
+    yourSolution = String.join("",result);
     Assertions.assertEquals(mySolution, yourSolution);
   }
 }

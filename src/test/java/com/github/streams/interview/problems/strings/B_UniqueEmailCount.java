@@ -2,9 +2,13 @@ package com.github.streams.interview.problems.strings;
 
 import com.github.javafaker.Faker;
 import com.github.streams.interview.InterviewProblemSolutions;
+import com.github.streams.interview.problems.employee.ignore.domain_related.Employee;
 import com.github.streams.interview.problems.employee.ignore.domain_related.Identity;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -16,7 +20,6 @@ import org.junit.jupiter.api.Test;
  * */
 class B_UniqueEmailCount {
   @Test
-  @Disabled
   void findUniqueDomainsWithCount() {
     final var instance = Faker.instance();
     final var employees =
@@ -34,9 +37,7 @@ class B_UniqueEmailCount {
             new Identity(instance.internet().emailAddress(), ""));
 
     final var mySolution = InterviewProblemSolutions.findUniqueDomainsCount(employees);
-
-    final Map<String, ? extends Number> yourSolution = null;
-
+    var yourSolution = employees.stream().map(e -> e.email().split("@")[1]).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     Assertions.assertEquals(mySolution, yourSolution);
   }
 }

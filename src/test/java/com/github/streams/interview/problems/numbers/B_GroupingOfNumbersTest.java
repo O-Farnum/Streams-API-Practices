@@ -1,9 +1,10 @@
 package com.github.streams.interview.problems.numbers;
 
 import com.github.streams.interview.InterviewProblemSolutions;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,6 @@ Q12) Given an array of integers (2,34,54,23,33,20,59,11,19,37 )
 */
 class B_GroupingOfNumbersTest {
   @Test
-  @Disabled
   void testGroupingOfNumbers() {
     final var randomIntegers =
         List.of(
@@ -43,9 +43,15 @@ class B_GroupingOfNumbersTest {
             new Random().nextInt(100),
             new Random().nextInt(100));
 
+    Map<Integer, List<Integer>> result = randomIntegers.stream().collect(Collectors.groupingBy(i -> i/10));
     final var mySolution = InterviewProblemSolutions.groupingOfNumbers(randomIntegers);
-    final var yourSolution = Collections.<Integer, List<Integer>>emptyMap();
+    var yourSolution = result;
 
+    for(int key : yourSolution.keySet()) {
+      System.out.print(key * 10 + ": ");
+      yourSolution.get(key).stream().forEach(a -> System.out.print(a + " "));
+      System.out.println();
+    }
     Assertions.assertEquals(mySolution, yourSolution);
   }
 }

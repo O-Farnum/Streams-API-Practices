@@ -3,6 +3,7 @@ package com.github.streams.practice.numbers.problems;
 import com.github.streams.practice.numbers.NumbersProblemSolution;
 import com.github.streams.practice.numbers.problems.ignore.data.DummyData;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,6 +28,7 @@ public class K_IntArray2DToListConverter {
     for(Integer i : test){
       System.out.println(i);
     }
+
     Assertions.assertEquals(mySolution, yourSolution);
   }
 }

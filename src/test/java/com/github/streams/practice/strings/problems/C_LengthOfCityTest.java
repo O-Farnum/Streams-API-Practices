@@ -4,6 +4,8 @@ import com.github.streams.practice.strings.StringProblemsSolution;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -23,12 +25,13 @@ import org.junit.jupiter.api.Test;
  */
 class C_LengthOfCityTest {
   @Test
-  @Disabled
   void testCalculateLengthOfEachCityTest() {
     final var cities = List.of("Mumbai", "Munnar", "Chennai", "Hyderabad");
     final var mySolution = StringProblemsSolution.findLengthOfEachCityAlongWithSize(cities);
 
-    final Map<String, Integer> yourSolution = new HashMap<>();
+    Map<String, Integer> yourSolution = new HashMap<>();
+    yourSolution = cities.stream().filter(city -> city.toLowerCase().startsWith("m"))
+            .collect(Collectors.toMap(city -> city,city -> city.length()));
     Assertions.assertEquals(yourSolution, mySolution);
   }
 }

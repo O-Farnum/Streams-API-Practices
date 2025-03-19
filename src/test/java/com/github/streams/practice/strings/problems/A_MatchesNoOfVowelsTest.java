@@ -1,6 +1,8 @@
 package com.github.streams.practice.strings.problems;
 
 import com.github.streams.practice.strings.StringProblemsSolution;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
@@ -34,13 +36,28 @@ import org.junit.jupiter.api.Test;
  */
 class A_MatchesNoOfVowelsTest {
   @Test
-  @Disabled
   void testAM_MaxNoOfVowelsTest() {
     var input = "The quick brown fox jumps right over the little lazy dog.";
     final var length = 2;
 
     var mySolution = StringProblemsSolution.getMatchesVowels(input, length);
-    var yourSolution = List.of();
+    List<String> yourSolution = new ArrayList<>();
+    List<String> vowels = List.of("aeiouAEIOU".split(""));
+
+    for(String word : input.split(" ")) {
+      String[] splitWord = word.split("");
+      int counter = 0;
+      for(int i = 0; i < splitWord.length; i++) {
+        if(vowels.contains(splitWord[i])) {
+          counter++;
+          if(counter > 2) {break;}
+        }
+      }
+      if(counter == 2){ yourSolution.add(word); }
+    }
+    for(String word : yourSolution) {
+      System.out.println(word);
+    }
     Assertions.assertEquals(mySolution, yourSolution);
   }
 }

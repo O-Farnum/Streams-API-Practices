@@ -6,14 +6,17 @@ import com.github.streams.practice.strings.StringProblemsSolution;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 class G_RemoveDuplicateCharactersTest {
   @Test
-  @Disabled()
   public void testRemoveDuplicates() {
     final String input = "dabfcadef";
-    final String yourSolution = "";
+    String yourSolution = "";
     final String mySolution = StringProblemsSolution.getUniqueCharacters(input);
 
+    yourSolution = Arrays.stream(input.split("")).distinct().collect(Collectors.joining());
     assertEquals(mySolution, yourSolution);
   }
 }
